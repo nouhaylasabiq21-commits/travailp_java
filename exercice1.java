@@ -6,35 +6,33 @@ public class exercice1 {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Entrez les nombres séparés par des espaces :");
-
-		String[] input = sc.nextLine().split(" ");
-		int n = input.length;
-		int[] t = new int[n];
-
+		System.out.println("entrez la taille du tableau :");
+		int n = sc.nextInt();
+		int[] tab = new int[n];
+		System.out.println("entrez les elements du tableau :");
 		for (int i = 0; i < n; i++) {
-			t[i] = Integer.parseInt(input[i]);
+			tab[i] = sc.nextInt();
 		}
-
-		int max = 1;
-		int actuel = 1;
-
+		int[] lis = new int[n];
+		for (int i = 0; i < n; i++) {
+			lis[i] = 1;
+		}
 		for (int i = 1; i < n; i++) {
-			if (t[i] > t[i - 1]) {
-				actuel++;
-			} else {
-
-				if (actuel > max)
-					max = actuel;
-				actuel = 1;
+			for (int j = 0; j < i; j++) {
+				if (tab[j] < tab[i] && lis[i] < lis[j] + 1) {
+					lis[i] = lis[j] + 1;
+				}
 			}
 		}
+		int max = 0;
+		for (int i = 0; i < n; i++) {
+			if (lis[i] > max)
+				max = lis[i];
+		}
 
-		if (actuel > max)
-			max = actuel;
-
-		System.out.println("Résultat : " + max);
+		System.out.println("Longueur de la plus longue sous-suite croissante : " + max);
 		sc.close();
+
 	}
 
 }

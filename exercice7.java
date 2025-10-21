@@ -20,7 +20,7 @@ public class exercice7 {
 	}
 
 	public static void main(String[] args) {
-		int[] tab = { 6, 6, 6, 6, 3, 7, 9 };
+		int[] tab = { 7, 6, 4, 6, 9, 7, 9 };
 		int result = frequenceMajoritaire(tab);
 
 		if (result != -1) {
